@@ -1,9 +1,11 @@
 module Bootstrap
   module ViewHelpers
     class Component
+      attr_reader :view, :options, :block
+      
       def initialize(view_context, options, &block)
         @view = view_context
-        @options = options
+        parse_options(options)
         @block = block
       end
 
@@ -11,8 +13,11 @@ module Bootstrap
 
       private
 
-      attr_reader :view, :options, :block
       delegate :content_tag, :safe_join, :concat, :capture, :link_to, to: :view
+
+      def parse_options(options)
+        @options = options
+      end
     end
 
     module Components; end

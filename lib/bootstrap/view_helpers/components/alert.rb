@@ -43,6 +43,7 @@ module Bootstrap
           default = { class: "alert #{contextual_class} " }
           default[:class] << 'alert-dismissible ' if dismissible?
           default[:class] << 'fade show ' if fade?
+          default[:class] << options.delete(:class) if options[:class]
           default.merge(options)
         end
 

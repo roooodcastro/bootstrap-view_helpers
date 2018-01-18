@@ -5,57 +5,74 @@ module Bootstrap
         def to_html
           content_tag(:div, class: container_options[:class]) do
             concat(header) if options[:title]
-            block.call(self) if block.present?
+            concat(body(&block)) if options[:body]
+            block.call(self) if block.present? && !options[:body]
           end
         end
 
-        def header(title = nil)
-          return if no_header?(title)
-          content_tag(:div, class: 'card-header') do
-            concat(yield) if block_given?
-            concat(title_tag(title || options[:title])) unless block_given?
+        def header(opts = {})
+          return if no_header?(opts[:title], block_given?)
+          content_tag(:div, class: "card-header #{opts[:class]}") do
+            yield if block_given?
+            concat(title_tag(opts[:title])) unless block_given?
           end
         end
 
-        def body(content = nil)
-          content_tag(:div, class: 'card-body') do
-            concat(yield) if block_given?
-            concat(content) unless block_given? || content.present?
+        def body(content_or_options = nil)
+          opts = content_or_options.is_a?(Hash) ? content_or_options : {}
+          content = content_or_options.is_a?(String) ? content_or_options : nil
+          content_tag(:div, class: body_class(opts)) do
+            yield if block_given?
+            concat(content) if content.present?
           end
         end
 
         def footer(content = nil)
           content_tag(:div, class: footer_options[:class]) do
-            concat(yield) if block_given?
+            yield if block_given?
             concat(content) unless block_given? || content.present?
           end
         end
 
         private
 
-        def no_header?(title)
-          title.blank? && options[:title].blank? && !block_given?
+        def parse_options(options)
+          super(options)
+          options[:body] = {} if options[:body].is_a?(TrueClass)
+        end
+
+        def no_header?(title, has_block)
+          title.blank? && options[:title].blank? && !has_block
         end
 
         def title_tag(title)
+          title = title || options[:title]
           return title unless header_options[:tag]
           content_tag(header_options[:tag], title,
                       class: header_options[:class])
         end
 
         def container_options
-          default = { class: 'card' }
+          default = { class: 'card ' }
+          default[:class] << options.delete(:class).to_s
           default.merge(options)
         end
 
         def header_options
-          default = { class: 'my-0', tag: :h3 }
+          default = { class: 'my-0', tag: :h5 }
           default.merge(options[:header] || {})
+        end
+
+        def body_class(opts)
+          classes = ['card-body']
+          classes << (options[:body] || {}).delete(:class)
+          classes << (opts || {}).delete(:class)
+          classes.compact.join(' ')
         end
 
         def footer_options
           default = { class: 'card-footer' }
-          default.merge(options[:body] || {})
+          default.merge(options[:footer] || {})
         end
       end
     end
