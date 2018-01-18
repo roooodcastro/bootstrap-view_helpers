@@ -12,8 +12,8 @@ module Bootstrap
 
       ALL = [PRIMARY, SECONDARY, SUCCESS, INFO, WARNING, DANGER, LIGHT, DARK]
 
-      def self.valid?(context)
-        ALL.include?(context.to_s.freeze)
+      def self.valid?(style)
+        ALL.include?(style.to_s.freeze)
       end
     end
   end

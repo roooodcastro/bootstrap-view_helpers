@@ -27,7 +27,7 @@ module Bootstrap
           protected
 
           def defaults
-            { type: :button, style: :primary }
+            { type: :button, style: ContextualClasses::PRIMARY }
           end
         end
 
@@ -36,8 +36,6 @@ module Bootstrap
         end
 
         protected
-
-        attr_reader :style
 
         def defaults
           Button.send(:defaults)
@@ -73,7 +71,7 @@ module Bootstrap
 
         def parse_options(opts)
           super(opts)
-          @style = options.delete(:style) || defaults[:style]
+          assign_and_validate_style
           inject_additional_attributes
         end
       end

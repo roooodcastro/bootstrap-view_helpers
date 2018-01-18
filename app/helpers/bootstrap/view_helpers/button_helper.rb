@@ -12,6 +12,16 @@ module Bootstrap
         options = options.merge({ href: path_opts, label: name, type: :link })
         Components::Button.build(self, options).to_html
       end
+
+      def bs_checkbox_button(label, options = {}, &block)
+        options = options.merge(label: label, type: :checkbox)
+        Components::Button.build(self, options, &block).to_html
+      end
+
+      def bs_radio_button(label, options = {}, &block)
+        options = options.merge(label: label, type: :radio)
+        Components::Button.build(self, options, &block).to_html
+      end
     end
   end
 end

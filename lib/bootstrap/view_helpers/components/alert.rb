@@ -1,5 +1,3 @@
-require_relative '../contextual_classes'
-
 module Bootstrap
   module ViewHelpers
     module Components
@@ -17,10 +15,6 @@ module Bootstrap
                   &block)
         end
 
-        def type
-          options[:type] || ContextualClasses::SECONDARY
-        end
-
         # Defaults to false
         def dismissible?
           options[:dismissible]
@@ -32,15 +26,19 @@ module Bootstrap
           options[:fade]
         end
 
-        private
+        protected
 
-        def contextual_class
-          return "alert-#{type}" if ContextualClasses.valid?(type)
-          'alert-secondary'
+        def defaults
+          { style: ContextualClasses::SECONDARY }
+        end
+
+        def parse_options(opts)
+          super
+          assign_and_validate_style
         end
 
         def container_options
-          default = { class: "alert #{contextual_class} " }
+          default = { class: "alert alert-#{style} " }
           default[:class] << 'alert-dismissible ' if dismissible?
           default[:class] << 'fade show ' if fade?
           default[:class] << options.delete(:class) if options[:class]
