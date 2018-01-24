@@ -4,7 +4,7 @@ module Bootstrap
       class Accordion < Component
         class Card < Bootstrap::ViewHelpers::Components::Card
           def header(_ = nil, _ = {})
-            content_tag(:div, class: "card-header #{options[:class]}",
+            content_tag(:div, class: "card-header p-0 #{options[:class]}",
                         id: header_id) do
               title_tag(options[:title])
             end

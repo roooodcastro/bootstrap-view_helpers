@@ -17,6 +17,11 @@ module Bootstrap
             options[:data][:target] = "##{target}"
           end
 
+          def inject_class_name_to_options
+            super
+            options[:class] << ' btn-block text-left py-2 px-3'
+          end
+
           def html_options
             options.merge({ type: :button })
           end

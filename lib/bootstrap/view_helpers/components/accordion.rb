@@ -8,7 +8,7 @@ module Bootstrap
     module Components
       class Accordion < Component
         def to_html
-          content_tag(:div, id: accordion_id) do
+          content_tag(:div, options.merge({ id: accordion_id })) do
             block.call(self)
           end
         end
