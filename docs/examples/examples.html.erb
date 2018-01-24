@@ -1,0 +1,75 @@
+<%= bs_button 'Botão' %>
+
+<hr />
+
+<%= bs_link_to 'Primary Link', '#', style: :primary %>
+<%= bs_link_to 'Secondary Link', '#', style: :secondary %>
+<%= bs_link_to 'Success Link', '#', style: :success %>
+<%= bs_link_to 'Info Link', '#', style: :info %>
+<%= bs_link_to 'Warning Link', '#', style: :warning %>
+<%= bs_link_to 'Danger Link', '#', style: :danger %>
+<%= bs_link_to 'Light Link', '#', style: :light %>
+<%= bs_link_to 'Dark Link', '#', style: :dark %>
+
+<hr />
+
+<%= bs_link_to 'Primary Outline Link', '#', outline: true, style: :primary %>
+<%= bs_link_to 'Secondary Outline Link', '#', outline: true, style: :secondary %>
+<%= bs_link_to 'Success Outline Link', '#', outline: true, style: :success %>
+<%= bs_link_to 'Info Outline Link', '#', outline: true, style: :info %>
+<%= bs_link_to 'Warning Outline Link', '#', outline: true, style: :warning %>
+<%= bs_link_to 'Danger Outline Link', '#', outline: true, style: :danger %>
+<%= bs_link_to 'Light Outline Link', '#', outline: true, style: :light %>
+<%= bs_link_to 'Dark Outline Link', '#', outline: true, style: :dark %>
+
+<hr />
+
+<%= bs_link_to 'Disabled Link', '#', disabled: true %>
+<%= bs_link_to 'Active Link', '#', active: true %>
+<%= bs_link_to 'Toggle Link', '#', toggle: true %>
+|
+<%= bs_button 'Disabled Button', disabled: true %>
+<%= bs_button 'Active Button', active: true %>
+<%= bs_button 'Toggle Button', toggle: true %>
+
+<hr />
+
+<div class="btn-group btn-group-toggle" data-toggle="buttons">
+  <%= bs_button('Check 1', type: :checkbox) %>
+  <%= bs_button('Check 2 Active', type: :checkbox, active: true) %>
+  <%= bs_button('Check 3', type: :checkbox) %>
+  <%= bs_button('Check Disabled', type: :checkbox, disabled: true) %>
+</div>
+
+<hr />
+
+<div class="btn-group btn-group-toggle" data-toggle="buttons">
+  <%= bs_button('Radio 1', type: :radio) %>
+  <%= bs_button('Radio 2 Active', type: :radio, active: true) %>
+  <%= bs_button('Radio 3', type: :radio) %>
+  <%= bs_button('Radio Disabled', type: :radio, disabled: true) %>
+</div>
+
+<hr />
+
+<%= bs_badge '1' %>
+<%= bs_badge '2', style: :secondary %>
+<%= bs_badge '3', style: :success %>
+<%= bs_badge '4', style: :info %>
+<%= bs_badge '5', style: :warning %>
+<%= bs_badge '6', style: :danger %>
+<%= bs_badge '7', style: :light %>
+<%= bs_badge '8', style: :dark %>
+|
+<%= bs_pill '1' %>
+<%= bs_pill '2', style: :secondary %>
+<%= bs_pill '3', style: :success %>
+<%= bs_pill '4', style: :info %>
+<%= bs_pill '5', style: :warning %>
+<%= bs_pill '6', style: :danger %>
+<%= bs_pill '7', style: :light %>
+<%= bs_pill '8', style: :dark %>
+|
+<%= bs_badge do %>
+  Block Badge
+<% end %>

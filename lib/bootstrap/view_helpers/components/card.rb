@@ -10,7 +10,9 @@ module Bootstrap
           end
         end
 
-        def header(opts = {})
+        def header(title_or_opts = nil, opts = {})
+          opts = title_or_opts if title_or_opts.is_a? Hash
+          opts[:title] = title_or_opts if title_or_opts.is_a? String
           return if no_header?(opts[:title], block_given?)
           content_tag(:div, class: "card-header #{opts[:class]}") do
             yield if block_given?
@@ -27,8 +29,9 @@ module Bootstrap
           end
         end
 
-        def footer(content = nil)
-          content_tag(:div, class: footer_options[:class]) do
+        def footer(content = nil, opts = {})
+          opts, content = content, nil if content.is_a? Hash
+          content_tag(:div, class: "card-footer #{opts[:class]}") do
             yield if block_given?
             concat(content) unless block_given? || content.present?
           end
@@ -40,6 +43,8 @@ module Bootstrap
           super(options)
           options[:body] = {} if options[:body].is_a?(TrueClass)
         end
+
+        def assign_and_validate_style; end
 
         def no_header?(title, has_block)
           title.blank? && options[:title].blank? && !has_block

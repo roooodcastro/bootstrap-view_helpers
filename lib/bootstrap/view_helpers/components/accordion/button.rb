@@ -1,0 +1,45 @@
+module Bootstrap
+  module ViewHelpers
+    module Components
+      class Accordion < Component
+        class Button < Bootstrap::ViewHelpers::Components::Button
+          protected
+
+          def inject_aria_attributes
+            options[:aria] ||= {}
+            options[:aria][:expanded] = expanded?
+            options[:aria][:controls] = target
+          end
+
+          def inject_data_attributes
+            options[:data] ||= {}
+            options[:data][:toggle] = 'collapse'
+            options[:data][:target] = "##{target}"
+          end
+
+          def html_options
+            options.merge({ type: :button })
+          end
+
+          def assign_and_validate_style
+            @style = ContextualClasses::LINK
+          end
+
+          def target
+            @target ||= options.delete(:target)
+          end
+
+          def expanded?
+            @expanded ||= !!options.delete(:expanded)
+          end
+
+          def parse_options(options)
+            super
+            @target = options.delete(:target)
+            @expanded = !!options.delete(:expanded)
+          end
+        end
+      end
+    end
+  end
+end

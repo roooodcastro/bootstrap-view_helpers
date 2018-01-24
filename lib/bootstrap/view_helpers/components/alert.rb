@@ -3,7 +3,7 @@ module Bootstrap
     module Components
       class Alert < Component
         def to_html
-          content_tag(:div, class: container_options[:class], role: 'alert') do
+          content_tag(:div, options) do
             concat(options[:content]) if options[:content]
             concat close_button
             block.call(self) if block.present?
@@ -32,9 +32,19 @@ module Bootstrap
           { style: ContextualClasses::SECONDARY }
         end
 
-        def parse_options(opts)
+        def parse_options(_)
           super
-          assign_and_validate_style
+          inject_class_name
+          options[:role] = 'alert'
+          options[:style] = options[:html_style]
+        end
+
+        def inject_class_name
+          class_name = "alert alert-#{style} "
+          class_name << 'alert-dismissible ' if dismissible?
+          class_name << 'fade show ' if fade?
+          class_name << options.delete(:class) if options[:class]
+          options[:class] = class_name
         end
 
         def container_options

@@ -9,8 +9,10 @@ module Bootstrap
       DANGER    = 'danger'.freeze
       LIGHT     = 'light'.freeze
       DARK      = 'dark'.freeze
+      LINK      = 'link'.freeze
 
-      ALL = [PRIMARY, SECONDARY, SUCCESS, INFO, WARNING, DANGER, LIGHT, DARK]
+      ALL = [PRIMARY, SECONDARY, SUCCESS, INFO, WARNING, DANGER, LIGHT, DARK,
+             LINK]
 
       def self.valid?(style)
         ALL.include?(style.to_s.freeze)

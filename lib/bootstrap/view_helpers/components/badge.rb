@@ -18,7 +18,6 @@ module Bootstrap
 
         def parse_options(opts)
           super
-          assign_and_validate_style
           inject_class_name
         end
 

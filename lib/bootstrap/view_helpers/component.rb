@@ -30,6 +30,7 @@ module Bootstrap
 
       def parse_options(options)
         @options = options
+        assign_and_validate_style
       end
     end
 

@@ -69,9 +69,8 @@ module Bootstrap
           options.merge({ type: :submit })
         end
 
-        def parse_options(opts)
-          super(opts)
-          assign_and_validate_style
+        def parse_options(_)
+          super
           inject_additional_attributes
         end
       end
