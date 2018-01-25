@@ -51,7 +51,7 @@ module Bootstrap
         end
 
         def title_tag(title)
-          title = title || options[:title]
+          title ||= options[:title]
           return title unless header_options[:tag]
           content_tag(header_options[:tag], title,
                       class: header_options[:class])

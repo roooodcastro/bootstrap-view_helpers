@@ -16,7 +16,8 @@ module Bootstrap
 
       protected
 
-      delegate :content_tag, :safe_join, :concat, :capture, :link_to, to: :view
+      delegate :content_tag, :safe_join, :concat, :capture, :link_to,
+               :button_tag, to: :view
 
       def defaults
         { style: ContextualClasses::PRIMARY }

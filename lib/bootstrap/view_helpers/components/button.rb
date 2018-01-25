@@ -1,6 +1,7 @@
 require_relative '../contextual_classes'
 require_relative 'button/button_type_not_found_error'
 require_relative 'button/checkbox'
+require_relative 'button/close'
 require_relative 'button/link'
 require_relative 'button/radio'
 
@@ -11,6 +12,7 @@ module Bootstrap
         TYPES = {
           button: Button,
           checkbox: Button::Checkbox,
+          close: Button::Close,
           link: Button::Link,
           radio: Button::Radio
         }
@@ -18,6 +20,7 @@ module Bootstrap
         class << self
           def build(view_context, options, &block)
             type = options.delete(:type) || defaults[:type]
+            options[:type] = options[:html_type]
             unless TYPES.keys.include? type
               raise ButtonTypeNotFoundError.new(type)
             end
@@ -32,10 +35,12 @@ module Bootstrap
         end
 
         def to_html
-          content_tag(:button, options.delete(:label), html_options)
+          content_tag(:button, label, html_options)
         end
 
         protected
+
+        attr_reader :label
 
         def defaults
           Button.send(:defaults)
@@ -45,6 +50,7 @@ module Bootstrap
           inject_class_name_to_options
           inject_aria_attributes
           inject_data_attributes
+          @label = options.delete(:label)
         end
 
         def inject_class_name_to_options
@@ -66,7 +72,7 @@ module Bootstrap
         end
 
         def html_options
-          options.merge({ type: :submit })
+          { type: :submit }.merge(options)
         end
 
         def parse_options(_)

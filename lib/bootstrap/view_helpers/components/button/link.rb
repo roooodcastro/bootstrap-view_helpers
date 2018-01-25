@@ -5,10 +5,12 @@ module Bootstrap
         class Link < Button
           def to_html
             verify_disabled_link
-            link_to(options.delete(:label), options.delete(:href), html_options)
+            link_to(label, href, html_options)
           end
 
           protected
+
+          attr_reader :href
 
           def verify_disabled_link
             return unless options[:disabled]
@@ -22,6 +24,11 @@ module Bootstrap
 
           def html_options
             options.merge({ role: :button })
+          end
+
+          def inject_additional_attributes
+            super
+            @href = options.delete(:href)
           end
         end
       end

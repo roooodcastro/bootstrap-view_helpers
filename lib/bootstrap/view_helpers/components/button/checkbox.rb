@@ -6,7 +6,7 @@ module Bootstrap
           def to_html
             input_options = input_html_options
             content_tag(:label, html_options) do
-              content_tag(:input, options.delete(:label), input_options)
+              content_tag(:input, label, input_options)
             end
           end
 

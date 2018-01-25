@@ -4,6 +4,7 @@ module Bootstrap
       def bs_button(label, options = {}, &block)
         options[:label] = label
         Components::Button.build(self, options, &block).to_html
+        button_tag
       end
 
       def bs_link_to(name = nil, path_opts = nil, options = nil, &block)
