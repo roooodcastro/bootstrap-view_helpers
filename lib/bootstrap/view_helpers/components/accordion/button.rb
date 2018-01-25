@@ -34,15 +34,19 @@ module Bootstrap
             @target ||= options.delete(:target)
           end
 
+          # rubocop:disable Style/DoubleNegation
           def expanded?
             @expanded ||= !!options.delete(:expanded)
           end
+          # rubocop:enable Style/DoubleNegation
 
+          # rubocop:disable Style/DoubleNegation
           def parse_options(options)
             super
             @target = options.delete(:target)
             @expanded = !!options.delete(:expanded)
           end
+          # rubocop:enable Style/DoubleNegation
         end
       end
     end

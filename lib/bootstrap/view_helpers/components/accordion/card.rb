@@ -10,11 +10,9 @@ module Bootstrap
             end
           end
 
-          def body(_ = nil, &block)
+          def body(_ = nil, &_block)
             content_tag(:div, collapse_options) do
-              content_tag(:div, class: body_class(options)) do
-                block.call
-              end
+              content_tag(:div, class: body_class(options)) { yield }
             end
           end
 

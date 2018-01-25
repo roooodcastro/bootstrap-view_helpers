@@ -7,9 +7,9 @@ module Bootstrap
         button_tag
       end
 
-      def bs_link_to(name = nil, path_opts = nil, options = nil, &block)
+      def bs_link_to(name = nil, path_opts = nil, opts = nil, &block)
         options, path_opts, name = path_opts, name, block if block_given?
-        options ||= {}
+        options ||= opts || {}
         options = options.merge({ href: path_opts, label: name, type: :link })
         Components::Button.build(self, options).to_html
       end

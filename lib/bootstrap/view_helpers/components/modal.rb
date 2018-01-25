@@ -18,7 +18,7 @@ module Bootstrap
 
         def header(title_or_options = nil, header_options = {}, &block)
           header_options = title_or_options || {} if block.present?
-          title_or_options = nil unless block.present?
+          title_or_options = nil if block.blank?
           header_options[:title] ||= title_or_options || title_text
           header_options[:dismiss] ||= dismiss
           Header.new(view, header_options, &block).to_html
@@ -40,7 +40,7 @@ module Bootstrap
           capture do
             concat(header) if title_text
             concat(body(&block)) if render_body?
-            block.call(self) if block.present? && !render_body?
+            yield(self) if block.present? && !render_body?
           end
         end
 
@@ -71,20 +71,23 @@ module Bootstrap
         end
 
         def inject_class_name_to_options
-          options[:class] ||= ''
-          options[:class] << " modal#{' fade' if fade}#{' show' if show}"
+          options[:class] = "#{options[:class]} modal#{fade}#{show}"
           options[:class] << " modal-#{size}" if size.present?
           options[:class].strip!
+        end
+
+        def parse_html_options
+          @centered = options.delete(:centered)
+          @dismiss = options.delete(:dismiss)
+          @fade = ' fade' if options[:fade].nil? || options.delete(:fade)
+          @show = ' show' if options.delete(:show)
+          @size = options.delete(:size)
         end
 
         def parse_options(options)
           super
           @title_text = options.delete(:title)
-          @centered = options.delete(:centered)
-          @dismiss = options.delete(:dismiss)
-          @fade = options[:fade].nil? ? true : options.delete(:fade)
-          @show = options.delete(:show)
-          @size = options.delete(:size)
+          parse_html_options
           inject_class_name_to_options
         end
       end

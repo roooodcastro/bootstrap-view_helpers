@@ -22,7 +22,7 @@ module Bootstrap
             type = options.delete(:type) || defaults[:type]
             options[:type] = options[:html_type]
             unless TYPES.keys.include? type
-              raise ButtonTypeNotFoundError.new(type)
+              raise ButtonTypeNotFoundError, type
             end
             TYPES[type].new(view_context, options, &block)
           end
@@ -60,11 +60,13 @@ module Bootstrap
           options[:class] << " btn btn-#{outline}#{style}#{active}"
         end
 
+        # rubocop:disable Style/DoubleNegation
         def inject_aria_attributes
           options[:aria] ||= {}
           options[:aria][:disabled] = true if options[:disabled]
           options[:aria][:pressed] = !!options[:active]
         end
+        # rubocop:enable Style/DoubleNegation
 
         def inject_data_attributes
           options[:data] ||= {}

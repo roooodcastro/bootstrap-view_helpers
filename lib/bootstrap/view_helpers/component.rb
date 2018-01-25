@@ -26,7 +26,7 @@ module Bootstrap
       def assign_and_validate_style
         style = options.delete(:style) || defaults[:style]
         return @style = style if ContextualClasses.valid?(style)
-        raise Components::StyleNotFoundError.new(style)
+        raise Components::StyleNotFoundError, style
       end
 
       def parse_options(options)

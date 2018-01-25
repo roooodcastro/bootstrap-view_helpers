@@ -12,7 +12,7 @@ module Bootstrap
           end
 
           def title(title = nil)
-            title = title || title_text
+            title ||= title_text
             return title unless title_options[:tag]
             content_tag(title_options[:tag], title,
                         class: title_options[:class])

@@ -48,9 +48,8 @@ module Bootstrap
         end
 
         def container_options
-          default = { class: "alert alert-#{style} " }
+          default = { class: "alert alert-#{style}#{' fade show' if fade?} " }
           default[:class] << 'alert-dismissible ' if dismissible?
-          default[:class] << 'fade show ' if fade?
           default[:class] << options.delete(:class) if options[:class]
           default.merge(options)
         end
