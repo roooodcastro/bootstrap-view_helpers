@@ -1,33 +1,48 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  erb_code: ERB Code
+
+  alerts:
+    show:
+      title: Alerts
+      subtitle: >
+        Provide contextual feedback messages for typical user actions with the
+        handful of available and flexible alert messages.
+      description_html: >
+        Alerts are available for any lenght of text, and also for rendering
+        content with blocks. Bootstrap <b>requires</b> a contextual style to be
+        applied to each alert. To make this gem more flexible, a default alert
+        style is applied if this option is not specified. The default style if
+        <code>secondary</code>.
+      examples: Examples
+      basic_usage: Basic Usage
+      basic_usage_html: >
+        The most basic way to create an alert using Bootstrap View Helpers is
+        shown below, with the method <code>bs_alert</code>. <br>An alert can
+        be created without any arguments, but it will only render an empty
+        alert. The first parameter of the method is the text to be displayed
+        inside the alert.
+      styles: Contextual Styles
+      styles_html: >
+        To add a different contextual style to the alert, use the second
+        parameter, which is a options hash. The key <code>:style</code>
+        specifies which contextual style should be used. If <code>:style</code>
+        if set to a style that's not valid (ie. not one of the eight default
+        Bootstrap contextual styles), a <code>StyleNotFoundError</code>
+        error will be thrown.
+      block_passing: Block Passing
+      block_passing_html: >
+        Instead of using the first argument to set the alert text, a block can
+        be passed and the first argument omitted. This way, it's possible to
+        make much more complex alert messages, and also render other Bootstrap
+        components inside it.
+      dismissible: Dismissing
+      dismissible_html: >
+        Any alert can include a button to allow the user to remove it from the
+        page. To do this, first make sure Bootstrap's alert JavaScript plugin
+        is configured,
+        <a href="https://getbootstrap.com/docs/4.0/components/alerts/#dismissing">
+        following these steps</a>.<br/>Then, simply set the
+        <code>:dismissible</code> key to <code>true</code> in the options hash.
+        This will make the alert vanish with a fade animation. To remove this
+        animation, set the <code>:fade</code> key, which is true by default,
+        to <code>false</code>.

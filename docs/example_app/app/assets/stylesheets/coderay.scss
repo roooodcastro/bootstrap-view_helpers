@@ -64,7 +64,6 @@ code { font-size: 100%; }
 .CodeRay .local-variable { color:#950 }
 .CodeRay .map .content { color:#808 }
 .CodeRay .map .delimiter { color:#40A}
-.CodeRay .map { background-color:hsla(200,100%,50%,0.06); }
 .CodeRay .namespace { color:#707; font-weight:bold }
 .CodeRay .octal { color:#40E }
 .CodeRay .operator { }
@@ -73,7 +72,6 @@ code { font-size: 100%; }
 .CodeRay .predefined-type { color:#0a8; font-weight:bold }
 .CodeRay .preprocessor { color:#579 }
 .CodeRay .pseudo-class { color:#00C; font-weight:bold }
-.CodeRay .regexp { background-color:hsla(300,100%,50%,0.06); }
 .CodeRay .regexp .content { color:#808 }
 .CodeRay .regexp .delimiter { color:#404 }
 .CodeRay .regexp .modifier { color:#C2C }
@@ -81,7 +79,6 @@ code { font-size: 100%; }
 .CodeRay .shell { background-color:hsla(120,100%,50%,0.06); }
 .CodeRay .shell .content { color:#2B2 }
 .CodeRay .shell .delimiter { color:#161 }
-.CodeRay .string { background-color:hsla(0,100%,50%,0.05); }
 .CodeRay .string .char { color: #b0b }
 .CodeRay .string .content { color: #D20 }
 .CodeRay .string .delimiter { color: #710 }

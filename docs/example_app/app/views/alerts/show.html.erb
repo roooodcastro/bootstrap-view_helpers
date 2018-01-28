@@ -1,17 +1,25 @@
-<h1>Alerts</h1>
+<%= title t('.title'), t('.subtitle') %>
 
-<h2>Basic Usage</h2>
+<h2 id="examples"><%= t('.examples') %></h2>
+<p><%= t('.description_html') %></p>
 
-<%= render_example partial: 'alerts/basic' %>
+<%= render_example_description('basic_usage') %>
+<%= render_example partial: 'basic_usage' %>
 
-<h2>Contextual Styles</h2>
+<%= render_example_description('styles') %>
+<%= render_example partial: 'styles' %>
 
-<%= render_example partial: 'alerts/styles' %>
+<%= render_example_description('block_passing') %>
+<%= render_example partial: 'block_passing' %>
 
-<h2>Block passing</h2>
+<%= render_example_description('dismissible') %>
+<%= render_example partial: 'dismissible' %>
 
-<%= render_example partial: 'alerts/block_passing' %>
-
-<h2>Dismissing</h2>
-
-<%= render_example partial: 'alerts/dismissible' %>
+<%= content_for :toc do %>
+  <%= toc_entry(:examples) do %>
+    <%= toc_entry(:basic_usage) %>
+    <%= toc_entry(:styles) %>
+    <%= toc_entry(:block_passing) %>
+    <%= toc_entry(:dismissible) %>
+  <% end %>
+<% end %>

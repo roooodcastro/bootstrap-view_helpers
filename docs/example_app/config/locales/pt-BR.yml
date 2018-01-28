@@ -1,0 +1,47 @@
+pt-BR:
+  erb_code: Código ERB
+
+  alerts:
+    show:
+      title: Alertas
+      subtitle: >
+        Fornecem mensagens contextuais de feedback para interacões comum com o
+        usuário, com um punhado de mensagens de alerta flexíveis disponíveis.
+      description_html: >
+        Alertas estão disponíveis para textos de qualquer tamanho, e também para
+        renderizar conteúdo utilizando blocos. Bootstrap <b>exige</b> que um
+        estilo contextual seja aplicado a cada alerta. Para fazer essa gem mais
+        flexível, um estilo padrão é aplicado ao alerta se essa opção não for
+        especificada. O estilo padrão é <code>secondary</code>.
+      examples: Exemplos
+      basic_usage: Uso Básico
+      basic_usage_html: >
+        A maneira mais básica de criar um alerta utilizando a gem Bootstrap View
+        Helpers é mostrado abaixo, com o método <code>bs_alert</code>. <br>
+        Um alerta pode ser criado sem nenhum parâmetro, porém isso irá apenas
+        renderizar um alerta vazio. O primeiro parâmetro do método é o texto a
+        ser exibido dentro do alerta.
+      styles: Estilos Contextuais
+      styles_html: >
+        Para adicionar um estilo contextual diferente do padrão ao alerta,
+        utilize o segundo parâmetro, que é um hash de opções. A chave
+        <code>:style</code> especifica qual estilo deve ser usado. Se for
+        especificada um estilo que não existe em <code>:style</code>, um erro
+        do tipo <code>StyleNotFoundError</code> será lançado.
+      block: Passagem de Blocos
+      block_html: >
+        Ao invés de usar o primeiro parâmetro para passar o texto do alerta, um
+        bloco pode ser utilizado, e o primeiro parâmetro omitido. Assim, é
+        possível criar mensagens de alerta muito mais complexas, e também
+        renderizar outros componentes do Bootstrap dentro dele.
+      dismissing: Remoção
+      dismissing_html: >
+        Qualquer alerta pode incluir um botão que permite o usuário removê-lo
+        da página. Para isso, certifique-se de que o plugin JavaScript de alerta
+        do Bootstrap está corretamente configurado,
+        <a href="https://getbootstrap.com/docs/4.0/components/alerts/#dismissing">
+        seguindo esses passos</a>.<br/>Então, simplesmente especifique a chave
+        <code>:dismissible</code> para <code>true</code> no hash de opções.
+        Isso irá fazer com que o alerta suma com uma animação de desaparecer.
+        Para remover essa animação, especifique a chave <code>:fade</code>, que
+        é true por padrão, para to <code>false</code>.
