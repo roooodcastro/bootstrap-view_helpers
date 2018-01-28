@@ -1,13 +1,5 @@
 <h1>Home</h1>
 
-<%= render partial: 'alert/basic' %>
+<h2>Alerts</h2>
 
-<code>
-  <%= render_raw partial: 'alert/basic' %>
-</code>
-
-<%= render partial: 'alert/styles' %>
-
-<code>
-  <%= render_raw partial: 'alert/styles' %>
-</code>
+<%= bs_link_to 'Alerts', alert_path, style: :primary %>
