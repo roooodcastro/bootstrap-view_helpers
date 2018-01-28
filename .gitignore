@@ -26,3 +26,10 @@ test/**/*
 _site
 .sass-cache
 .jekyll-metadata
+
+docs/example_app/log
+docs/example_app/.idea
+docs/example_app/tmp
+docs/example_app/.bundle
+docs/example_app/.byebug_history
+docs/example_app/.sass-cache
