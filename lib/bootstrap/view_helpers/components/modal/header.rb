@@ -4,7 +4,7 @@ module Bootstrap
       class Modal < Component
         class Header < Component
           def to_html
-            content_tag(:div, class: 'modal-header') do
+            content_tag(:div, class: options[:class]) do
               concat(block.call(self)) if block.present?
               concat title if block.blank?
               concat close_button if dismiss

@@ -18,7 +18,7 @@ module Bootstrap
 
         def header(title_or_options = nil, header_options = {}, &block)
           header_options = title_or_options || {} if block.present?
-          title_or_options = nil if block.blank?
+          title_or_options = nil if block.present?
           header_options[:title] ||= title_or_options || title_text
           header_options[:dismiss] ||= dismiss
           Header.new(view, header_options, &block).to_html
