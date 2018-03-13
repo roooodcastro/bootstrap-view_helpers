@@ -50,6 +50,7 @@ module Bootstrap
 
         def dialog_options
           class_name = "modal-dialog#{' modal-dialog-centered' if centered}"
+          class_name << " modal-#{size}" if size.present?
           { class: class_name, role: 'document' }
         end
 
@@ -72,7 +73,6 @@ module Bootstrap
 
         def inject_class_name_to_options
           options[:class] = "#{options[:class]} modal#{fade}#{show}"
-          options[:class] << " modal-#{size}" if size.present?
           options[:class].strip!
         end
 
